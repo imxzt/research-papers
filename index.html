@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>田信忠 · 论文在线预览</title>
+<style>
+  :root { --navy:#1B3A66; --blue:#2E5496; --ink:#23272E; --sub:#71767F; --line:#D3DAE4; --panel:#F7F9FC; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif; color:var(--ink);
+         background:#F2F4F8; line-height:1.6; }
+  .wrap { max-width:1000px; margin:0 auto; padding:32px 20px 56px; }
+  header { background:#fff; border-bottom:2px solid var(--navy); padding:22px 24px; }
+  header h1 { font-size:20px; color:var(--navy); letter-spacing:1.5px; }
+  header h1 span { display:block; font-size:12px; color:var(--sub); letter-spacing:1.4px; font-weight:400; margin-top:5px; }
+  .note { background:var(--panel); border:.6px solid var(--line); border-left:3px solid var(--blue);
+          padding:11px 15px; font-size:13px; color:#4B5563; margin:18px 0 22px; }
+  .note b { color:var(--navy); }
+  h2 { font-size:13.5px; color:var(--navy); letter-spacing:1.2px; margin:0 0 10px; }
+  .papers { background:#fff; border:.6px solid var(--line); }
+  .paper { padding:12px 16px; border-bottom:.6px solid var(--line); cursor:pointer; display:flex;
+           justify-content:space-between; gap:12px; align-items:baseline; }
+  .paper:last-child { border-bottom:none; }
+  .paper:hover { background:var(--panel); }
+  .paper.on { background:#EEF3FA; box-shadow:inset 3px 0 0 var(--blue); }
+  .paper .t { font-size:13.5px; font-weight:600; }
+  .paper .m { font-size:12px; color:var(--sub); margin-top:3px; }
+  .paper .open { font-size:12px; color:var(--blue); white-space:nowrap; }
+  .viewer { background:#fff; border:.6px solid var(--line); margin-top:22px; }
+  .bar { display:flex; align-items:center; gap:10px; padding:10px 14px; border-bottom:.6px solid var(--line); }
+  .bar .name { font-size:13px; font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  button { font:inherit; font-size:12.5px; color:var(--navy); background:#fff; border:.8px solid #C6D2E4;
+           border-radius:3px; padding:3px 10px; cursor:pointer; }
+  button:disabled { color:#AFB6C2; border-color:#E0E5ED; cursor:default; }
+  #pinfo { font-size:12.5px; color:var(--sub); min-width:96px; text-align:center; }
+  #stage { padding:12px; text-align:center; min-height:320px; overflow:auto; }
+  canvas { max-width:100%; box-shadow:0 1px 6px rgba(0,0,0,.12); background:#fff; }
+  .hint { color:var(--sub); font-size:13px; padding:40px 0; }
+  footer { text-align:center; color:var(--sub); font-size:12.5px; letter-spacing:1px; margin-top:28px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding:0">
+    <h1>田信忠 · 论文在线预览<span>RESEARCH PAPERS · ONLINE PREVIEW</span></h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="note">
+    下列为<b>未发表论文的预览版</b>：摘要结论、图表与回归表、结论章节<b>已隐去</b>，保留标题、作者、
+    研究背景与文献综述、研究假设、变量定义与模型设定。点击标题即可<b>在本页直接阅读全文</b>（无需下载）。
+  </div>
+
+  <h2>论文列表</h2>
+  <div class="papers" id="list"></div>
+
+  <div class="viewer">
+    <div class="bar">
+      <span class="name" id="cur">—</span>
+      <button id="prev" disabled>上一页</button>
+      <span id="pinfo"></span>
+      <button id="next" disabled>下一页</button>
+      <button id="dl">下载 PDF</button>
+    </div>
+    <div id="stage"><div class="hint">正在载入…</div></div>
+  </div>
+
+  <footer>田信忠 · 金融数据分析 / 行业研究 · imxzt@qq.com</footer>
+</div>
+
+<script src="https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/pdfjs/pdf.min.js"></script>
+<script>
+const BASE = "https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/";
+const PAPERS = [
+  { t:"数字贸易协议对全球价值链前向参与度的影响研究——来自 RCEP 国家的证据",
+    m:"方冬莉、田信忠、张皓彦、苏梦颖 · 广西民族大学经济学院 · 投稿《国际贸易问题》等期刊",
+    f:"02-digital-trade-agreements-and-gvc-forward-participation.pdf" },
+  { t:"贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据",
+    m:"李政、田信忠、张皓彦 · 区域贸易协定深度与绿色全要素生产率",
+    f:"04-rta-depth-and-green-tfp.pdf" },
+  { t:"数字普惠金融提高了农村居民收入吗？——来自 285 个城市的经验证据",
+    m:"田信忠 · 2011–2022 年中国 285 个地级及以上城市面板数据 · 投稿 Agriculture 等期刊",
+    f:"01-digital-financial-inclusion-and-rural-income.pdf" },
+  { t:"Extreme Weather Shocks and Rural Household Income in China: The Buffering Role of Digital Financial Inclusion and Spatial Spillover Effects",
+    m:"极端天气冲击与农村收入——数字金融缓冲作用 · 英文工作论文",
+    f:"03-extreme-weather-shocks-rural-income-and-digital-finance.pdf" }
+];
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = BASE + "pdfjs/pdf.worker.min.js";
+
+const listEl = document.getElementById('list'), stage = document.getElementById('stage');
+const curEl = document.getElementById('cur'), pinfo = document.getElementById('pinfo');
+const btnPrev = document.getElementById('prev'), btnNext = document.getElementById('next'), btnDl = document.getElementById('dl');
+let doc = null, page = 1, idx = -1, rendering = false;
+
+PAPERS.forEach((p, i) => {
+  const d = document.createElement('div');
+  d.className = 'paper'; d.dataset.i = i;
+  d.innerHTML = '<div><div class="t">' + p.t + '</div><div class="m">' + p.m + '</div></div><div class="open">在线阅读 ›</div>';
+  d.onclick = () => open(i);
+  listEl.appendChild(d);
+});
+
+function mark() {
+  [...listEl.children].forEach((el, i) => el.classList.toggle('on', i === idx));
+  btnDl.onclick = () => { if (idx >= 0) window.open(BASE + PAPERS[idx].f, '_blank'); };
+}
+
+async function open(i) {
+  idx = i; mark();
+  curEl.textContent = PAPERS[i].t;
+  stage.innerHTML = '<div class="hint">正在载入 PDF…</div>';
+  pinfo.textContent = ''; btnPrev.disabled = btnNext.disabled = true;
+  try {
+    doc = await pdfjsLib.getDocument({ url: BASE + PAPERS[i].f, cMapPacked: true }).promise;
+    page = 1;
+    await render();
+  } catch (e) {
+    stage.innerHTML = '<div class="hint">载入失败：' + (e && e.message ? e.message : e) + '</div>';
+  }
+}
+
+async function render() {
+  if (!doc || rendering) return;
+  rendering = true;
+  try {
+    const pg = await doc.getPage(page);
+    const v1 = pg.getViewport({ scale: 1 });
+    const maxW = Math.min(stage.clientWidth - 26, 900);
+    const vp = pg.getViewport({ scale: maxW / v1.width });
+    const cv = document.createElement('canvas');
+    cv.width = Math.floor(vp.width); cv.height = Math.floor(vp.height);
+    await pg.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
+    stage.innerHTML = ''; stage.appendChild(cv);
+    pinfo.textContent = '第 ' + page + ' / ' + doc.numPages + ' 页';
+    btnPrev.disabled = page <= 1; btnNext.disabled = page >= doc.numPages;
+  } finally { rendering = false; }
+}
+
+btnPrev.onclick = () => { if (page > 1) { page--; render(); } };
+btnNext.onclick = () => { if (doc && page < doc.numPages) { page++; render(); } };
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') btnPrev.click();
+  if (e.key === 'ArrowRight') btnNext.click();
+});
+
+if (window.pdfjsLib) open(0);
+else stage.innerHTML = '<div class="hint">PDF 组件加载失败（pdf.js）。</div>';
+</script>
+</body>
+</html>
