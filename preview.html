@@ -155,6 +155,12 @@
   .pj-grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px}
   li.pj{padding:21px 0 19px;border-bottom:1px solid #F0F3F8;scroll-margin-top:22px;
         transition:background .18s ease,box-shadow .18s ease}
+  li.pj.has-mat{cursor:pointer}
+  li.pj.has-mat:hover{background:var(--panel);
+        box-shadow:-14px 0 0 var(--panel),14px 0 0 var(--panel)}
+  li.pj.has-mat:hover .pj-h h4{color:var(--blue)}
+  li.pj.has-mat:hover .pj-act button{border-color:var(--blue)}
+  li.pj .pj-none{font-size:11.8px;color:var(--faint);letter-spacing:.4px}
   li.pj.focus{background:var(--blue-soft);box-shadow:-14px 0 0 var(--blue-soft),14px 0 0 var(--blue-soft)}
   .pj-h{display:flex;gap:10px;align-items:baseline}
   .pj-h .no{font-family:var(--serif);font-size:16px;color:var(--blue);letter-spacing:1px;flex:none}
@@ -268,7 +274,7 @@
     <div class="pj-group">
       <h3 class="pj-gt">校内合作<span>编号 01–07</span></h3>
       <ol class="pj-grid">
-        <li class="pj" id="p01">
+        <li class="pj has-mat" id="p01">
           <div class="pj-h"><span class="no">01</span><h4>数字普惠金融与农民增收</h4></div>
           <p class="pj-res">成果：《数字普惠金融提高了农村居民收入吗？》· 研究生学术论坛一等奖</p>
           <dl class="pj-f">
@@ -278,7 +284,7 @@
           </dl>
           <div class="pj-act"><button data-open="1">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p02">
+        <li class="pj has-mat" id="p02">
           <div class="pj-h"><span class="no">02</span><h4>市场调研与分析大赛全国总决赛</h4></div>
           <p class="pj-res">成果：《留华筑梦，择业有因——东盟来华留学生就业意愿及其影响因素研究》· 全国总决赛三等奖</p>
           <dl class="pj-f">
@@ -288,7 +294,7 @@
           </dl>
           <div class="pj-act"><button data-open="2">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p03">
+        <li class="pj has-mat" id="p03">
           <div class="pj-h"><span class="no">03</span><h4>极端天气与农村居民收入</h4></div>
           <p class="pj-res">成果：《极端天气冲击与农村收入——数字金融缓冲作用》· 工作论文</p>
           <dl class="pj-f">
@@ -298,7 +304,7 @@
           </dl>
           <div class="pj-act"><button data-open="5">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p04">
+        <li class="pj has-mat" id="p04">
           <div class="pj-h"><span class="no">04</span><h4>城市冷链流通基础设施政策效应评估</h4></div>
           <p class="pj-res">成果：《流通基础设施升级对居民消费活力的影响》· 中间成果</p>
           <dl class="pj-f">
@@ -308,7 +314,7 @@
           </dl>
           <div class="pj-act"><button data-open="7">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p05">
+        <li class="pj has-mat" id="p05">
           <div class="pj-h"><span class="no">05</span><h4>区域贸易协议与绿色全要素生产率</h4></div>
           <p class="pj-res">成果：《贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据》</p>
           <dl class="pj-f">
@@ -318,7 +324,7 @@
           </dl>
           <div class="pj-act"><button data-open="3">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p06">
+        <li class="pj has-mat" id="p06">
           <div class="pj-h"><span class="no">06</span><h4>数字协定协议与价值链前向参与度</h4></div>
           <p class="pj-res">成果：《数字贸易协议对全球价值链前向参与度的影响研究——来自 RCEP 国家的证据》· 已投稿</p>
           <dl class="pj-f">
@@ -328,7 +334,7 @@
           </dl>
           <div class="pj-act"><button data-open="4">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p07">
+        <li class="pj has-mat" id="p07">
           <div class="pj-h"><span class="no">07</span><h4>中国—RCEP 供应链转移</h4></div>
           <p class="pj-res">成果：《区域贸易协议深度对中国供应链转移的影响研究——基于 RCEP 成员国的实证分析》· 工作论文</p>
           <dl class="pj-f">
@@ -343,7 +349,7 @@
     <div class="pj-group">
       <h3 class="pj-gt">跨校合作<span>编号 08–10</span></h3>
       <ol class="pj-grid">
-        <li class="pj" id="p08">
+        <li class="pj has-mat" id="p08">
           <div class="pj-h"><span class="no">08</span><h4>绿色金融与绿色创新（天津商业大学）</h4></div>
           <p class="pj-res">成果：《Green Finance and the Quality of Green Innovation》· 合作论文</p>
           <dl class="pj-f">
@@ -353,7 +359,7 @@
           </dl>
           <div class="pj-act"><button data-open="9">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p09">
+        <li class="pj has-mat" id="p09">
           <div class="pj-h"><span class="no">09</span><h4>广西东盟合作研究报告（广西大学）</h4></div>
           <p class="pj-res">成果研究报告：《广西—东盟合作发展年度报告（2024 年）马来西亚篇》· 已出版</p>
           <dl class="pj-f">
@@ -368,13 +374,14 @@
             <div><dt>数据处理</dt><dd>基于合作方提供的卖方分析师盈利预测数据（单文件最大 <b>5.1GB</b>、多套 dta 合计 <b>5GB+</b>）完成清洗、对齐、标签化与样本匹配</dd></div>
             <div><dt>分析建模</dt><dd>Python 构造变量、Stata 建模，采用倾向得分匹配（PSM）控制样本选择偏差</dd></div>
           </dl>
+          <div class="pj-none">该成果材料未公开</div>
         </li>
       </ol>
     </div>
     <div class="pj-group">
       <h3 class="pj-gt">课题参与<span>编号 11–12</span></h3>
       <ol class="pj-grid">
-        <li class="pj" id="p11">
+        <li class="pj has-mat" id="p11">
           <div class="pj-h"><span class="no">11</span><h4>校级立项：RCEP 框架下数字贸易规则对区域价值链前向参与度的提升路径与对策研究</h4></div>
           <p class="pj-res">成果：广西民族大学研究生教育创新计划 · gxmzu-chxs2025246</p>
           <dl class="pj-f">
@@ -392,18 +399,19 @@
             <div><dt>分析建模</dt><dd>围绕合作内涵与逻辑构建分析框架，为实证部分提供数据与文献支撑</dd></div>
             <div><dt>研究结论</dt><dd>参与课题申报与研究执行，支撑研究报告撰写，形成优化策略建议</dd></div>
           </dl>
+          <div class="pj-none">该成果材料未公开</div>
         </li>
       </ol>
     </div>
     <div class="pj-group">
       <h3 class="pj-gt">会议实践<span>编号 13–15</span></h3>
       <ol class="pj-grid">
-        <li class="pj" id="p13">
+        <li class="pj has-mat" id="p13">
           <div class="pj-h"><span class="no">13</span><h4>中南财经政法大学经济贸易学院 2026 年暑期学校（武汉）</h4></div>
           <p class="pj-res">成果：《数智时代的经济学研究：道与器》结业证书</p>
           <div class="pj-act"><button data-open="15">在页内预览成果材料</button></div>
         </li>
-        <li class="pj" id="p14">
+        <li class="pj has-mat" id="p14">
           <div class="pj-h"><span class="no">14</span><h4>第十一期碳中和与气候金融高端论坛（长沙）</h4></div>
           <p class="pj-res">成果：《气候政策不确定性对制造业企业全要素生产率的影响》· 合作论文</p>
           <dl class="pj-f">
@@ -416,6 +424,7 @@
         <li class="pj" id="p15">
           <div class="pj-h"><span class="no">15</span><h4>2025 年首届中国—东盟财经高端论坛（南宁）</h4></div>
           <p class="pj-res">成果：会议参与</p>
+          <div class="pj-none">该成果材料未公开</div>
         </li>
       </ol>
     </div>
@@ -508,7 +517,7 @@ PAPERS.forEach((p, i) => {
     total++;
     li.className = 'paper'; li.dataset.idx = i;
     li.innerHTML = '<div class="t">' + p.t + '</div><div class="m">' + p.m + '</div>' + ARROW;
-    li.onclick = () => open(i);
+    li.onclick = () => openAndReveal(i);
   }
   listEl.appendChild(li);
 });
@@ -604,12 +613,35 @@ window.addEventListener('resize', () => { if (doc && !busy) render(); });
 if (window.pdfjsLib) open(PAPERS.findIndex(p => !p.g));
 else stage.innerHTML = '<div class="hint">PDF 组件加载失败（pdf.js）。</div>';
 
-/* ── 项目经历：在阅读器打开成果材料 / 支持 #pNN 深链 ───────── */
+/* ── 项目经历 ↔ 阅读器 / 支持 #pNN 深链 ─────────────────── */
+const viewerEl = document.querySelector('.viewer');
+
+/* 阅读器若不在视野内（尤其从下方项目卡点进来），把它滚回来；已在视野内则不跳 */
+function revealViewer(){
+  const r = viewerEl.getBoundingClientRect();
+  if (r.top < 8 || r.bottom > window.innerHeight - 8) {
+    viewerEl.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
+function openAndReveal(i){
+  revealViewer();
+  return open(i);
+}
+
+/* 小字按钮 */
 document.querySelectorAll('.pj-act button[data-open]').forEach(b => {
-  b.onclick = () => {
-    open(+b.dataset.open);
-    document.querySelector('.viewer').scrollIntoView({ behavior:'smooth', block:'center' });
-  };
+  b.onclick = (e) => { e.stopPropagation(); openAndReveal(+b.dataset.open); };
+});
+
+/* 整张卡片可点：点标题或空白处都能打开对应材料（链接/按钮各自处理） */
+document.querySelectorAll('li.pj.has-mat').forEach(li => {
+  const btn = li.querySelector('.pj-act button[data-open]');
+  if (!btn) return;
+  const idx = +btn.dataset.open;
+  li.addEventListener('click', (e) => {
+    if (e.target.closest('a, button')) return;
+    openAndReveal(idx);
+  });
 });
 function gotoHash(){
   const h = location.hash || '';
