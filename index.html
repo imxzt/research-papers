@@ -3,80 +3,223 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>田信忠 · 论文在线预览</title>
+<title>田信忠 · 论文与研究材料</title>
 <style>
-  :root { --navy:#1B3A66; --blue:#2E5496; --ink:#23272E; --sub:#71767F; --line:#D3DAE4; --panel:#F7F9FC; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:"Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif; color:var(--ink);
-         background:#F2F4F8; line-height:1.6; }
-  header { background:#fff; border-bottom:2px solid var(--navy); padding:22px 24px; }
-  .wrap { max-width:960px; margin:0 auto; padding:26px 20px 56px; }
-  header .wrap { padding:0; }
-  h1 { font-size:20px; color:var(--navy); letter-spacing:1.5px; }
-  h1 span { display:block; font-size:12px; color:var(--sub); letter-spacing:1.4px; font-weight:400; margin-top:5px; }
-  .note { background:var(--panel); border:.6px solid var(--line); border-left:3px solid var(--blue);
-          padding:11px 15px; font-size:13px; color:#4B5563; margin:0 0 22px; }
-  .note b { color:var(--navy); }
-  h2 { font-size:13.5px; color:var(--navy); letter-spacing:1.2px; margin:0 0 10px; }
-  ul { list-style:none; background:#fff; border:.6px solid var(--line); }
-  li { padding:12px 16px; border-bottom:.6px solid var(--line); cursor:pointer; display:flex;
-       justify-content:space-between; gap:14px; align-items:flex-start; }
-  li:last-child { border-bottom:none; }
-  li:hover { background:var(--panel); }
-  li.on { background:#EEF3FA; box-shadow:inset 3px 0 0 var(--blue); }
-  li.ghead { background:#F2F5FA; color:var(--navy); font-weight:700; font-size:12.5px;
-             letter-spacing:.8px; cursor:default; padding:8px 16px; }
-  li.ghead:hover { background:#F2F5FA; }
-  .t { font-size:13.5px; font-weight:600; }
-  .m { font-size:12px; color:var(--sub); margin-top:3px; }
-  .go { font-size:12px; color:var(--blue); white-space:nowrap; padding-top:2px; }
-  .viewer { background:#fff; border:.6px solid var(--line); margin-top:22px; }
-  .bar { display:flex; align-items:center; gap:9px; padding:10px 14px; border-bottom:.6px solid var(--line); flex-wrap:wrap; }
-  .bar .name { font-size:13px; font-weight:600; flex:1; min-width:180px; overflow:hidden;
-               text-overflow:ellipsis; white-space:nowrap; }
-  button, a.btn { font:inherit; font-size:12.5px; color:var(--navy); background:#fff; border:.8px solid #C6D2E4;
-           border-radius:3px; padding:3px 10px; cursor:pointer; text-decoration:none; display:inline-block; }
-  button:disabled { color:#AFB6C2; border-color:#E0E5ED; cursor:default; }
-  #pinfo { font-size:12.5px; color:var(--sub); min-width:92px; text-align:center; }
-  #stage { padding:12px; text-align:center; min-height:360px; }
-  canvas { max-width:100%; box-shadow:0 1px 6px rgba(0,0,0,.12); background:#fff; }
-  .hint { color:var(--sub); font-size:13px; padding:52px 0; }
-  footer { text-align:center; color:var(--sub); font-size:12.5px; letter-spacing:1px; margin-top:26px; }
+  :root{
+    --navy:#16304F; --blue:#2B5EA7; --blue-soft:#EAF0F9;
+    --ink:#1F242B; --sub:#6B7280; --faint:#9AA3AF;
+    --line:#E6EAF1; --line-2:#D8DEE9; --panel:#F7F9FC; --stage:#EDF0F5;
+    --serif:"Songti SC","SimSun",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font:14px/1.65 -apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+    color:var(--ink);background:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--blue);text-decoration:none}
+
+  /* ── 页头 ───────────────────────────── */
+  .top{border-bottom:1px solid var(--line);background:#fff}
+  .top-in{max-width:1180px;margin:0 auto;padding:30px 28px 24px;
+          display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .brand h1{font-family:var(--serif);font-size:27px;font-weight:400;color:var(--navy);
+            letter-spacing:6px;line-height:1.2}
+  .brand p{margin-top:8px;font-size:12px;color:var(--faint);letter-spacing:2.4px}
+  .brand p b{font-weight:400;color:var(--sub);letter-spacing:2.2px}
+  .contact{font-size:12.5px;color:var(--sub);letter-spacing:.4px;text-align:right}
+  .contact a{color:var(--sub);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+  .contact a:hover{color:var(--blue);border-color:var(--blue)}
+
+  /* ── 版面 ───────────────────────────── */
+  .wrap{max-width:1180px;margin:0 auto;padding:26px 28px 40px}
+  .note{
+    display:flex;gap:11px;align-items:flex-start;
+    background:var(--panel);border:1px solid var(--line);border-radius:2px;
+    padding:13px 16px;margin-bottom:26px;
+  }
+  .note svg{flex:none;margin-top:2px;color:var(--blue)}
+  .note p{font-size:12.8px;color:#4B5563;line-height:1.7}
+  .note b{color:var(--navy);font-weight:600}
+  .note .dot{color:var(--faint);margin:0 5px}
+
+  .layout{display:grid;grid-template-columns:352px minmax(0,1fr);gap:26px;align-items:start}
+
+  /* ── 目录 ───────────────────────────── */
+  .side-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:9px;margin-bottom:2px;border-bottom:1.5px solid var(--navy);
+  }
+  .side-head h2{font-family:var(--serif);font-size:14px;font-weight:400;
+                color:var(--navy);letter-spacing:3px}
+  .side-head span{font-size:11.5px;color:var(--faint);letter-spacing:.6px}
+  #list{list-style:none}
+
+  li.ghead{
+    font-family:var(--serif);font-size:12.5px;color:var(--navy);letter-spacing:2px;
+    padding:16px 2px 6px;cursor:default;
+  }
+  li.ghead:first-child{padding-top:8px}
+  li.ghead::before{
+    content:"";display:inline-block;width:12px;height:1px;background:var(--blue);
+    vertical-align:3.5px;margin-right:8px;
+  }
+
+  li.paper{
+    position:relative;padding:9px 26px 9px 11px;cursor:pointer;border-radius:2px;
+    transition:background .16s ease;
+  }
+  li.paper::before{
+    content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;
+    background:transparent;border-radius:1px;transition:background .16s ease;
+  }
+  li.paper:hover{background:var(--panel)}
+  li.paper:hover::before{background:var(--line-2)}
+  li.paper.on{background:var(--blue-soft)}
+  li.paper.on::before{background:var(--blue)}
+  li.paper .t{font-size:13.4px;font-weight:600;line-height:1.5;color:var(--ink);
+              display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  li.paper.on .t{color:var(--navy)}
+  li.paper .m{font-size:11.8px;color:var(--sub);margin-top:4px;line-height:1.55;
+              display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  li.paper .go{
+    position:absolute;right:8px;top:50%;transform:translateY(-50%);
+    color:var(--line-2);transition:color .16s ease,transform .16s ease;
+  }
+  li.paper:hover .go{color:var(--blue);transform:translateY(-50%) translateX(2px)}
+  li.paper.on .go{color:var(--blue)}
+
+  /* ── 阅读器 ─────────────────────────── */
+  .viewer{border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff;
+          position:sticky;top:18px}
+  .bar{
+    display:flex;align-items:center;gap:6px;padding:9px 12px;
+    border-bottom:1px solid var(--line);background:#fff;
+  }
+  .bar .name{
+    flex:1;min-width:0;font-size:12.6px;font-weight:600;color:var(--navy);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .grp{display:flex;align-items:center;gap:2px}
+  .grp + .grp{margin-left:4px;padding-left:8px;border-left:1px solid var(--line)}
+  .ib{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:29px;height:29px;border:none;background:transparent;border-radius:2px;
+    color:var(--sub);cursor:pointer;transition:background .15s ease,color .15s ease;
+  }
+  .ib:hover:not(:disabled){background:var(--panel);color:var(--navy)}
+  .ib:disabled{color:#CBD2DD;cursor:default}
+  .ib svg{display:block}
+  #pinfo{font-size:12.2px;color:var(--sub);min-width:56px;text-align:center;
+         font-variant-numeric:tabular-nums;letter-spacing:.3px}
+  .dl{
+    display:inline-flex;align-items:center;gap:6px;height:29px;padding:0 11px;
+    font-size:12.2px;color:var(--navy);border:1px solid var(--line-2);border-radius:2px;
+    background:#fff;transition:border-color .15s ease,color .15s ease,background .15s ease;
+  }
+  .dl:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-soft)}
+
+  #stage{
+    background:var(--stage);padding:16px;text-align:center;
+    min-height:420px;max-height:calc(100vh - 128px);overflow:auto;
+  }
+  canvas{background:#fff;box-shadow:0 1px 3px rgba(22,48,79,.10),0 6px 20px rgba(22,48,79,.07);
+         display:block;margin:0 auto;border-radius:1px}
+  .hint{color:var(--sub);font-size:12.8px;padding:150px 0;letter-spacing:.4px}
+
+  footer{
+    margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:11.8px;color:var(--faint);letter-spacing:.5px;
+  }
+  footer .kbd{color:var(--sub)}
+
+  /* ── 响应式 ─────────────────────────── */
+  @media (max-width:960px){
+    .layout{grid-template-columns:1fr;gap:22px}
+    .viewer{position:static}
+    #stage{max-height:none}
+    .top-in,.wrap{padding-left:20px;padding-right:20px}
+    .brand h1{font-size:23px;letter-spacing:4px}
+  }
+  @media (max-width:520px){
+    .bar{flex-wrap:wrap;gap:4px}
+    .bar .name{flex-basis:100%;white-space:normal}
+    .grp + .grp{margin-left:0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap"><h1>田信忠 · 论文在线预览<span>RESEARCH PAPERS · ONLINE PREVIEW</span></h1></div>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1>田信忠</h1>
+      <p><b>论文与研究材料</b> · 在线预览</p>
+    </div>
+    <div class="contact"><a href="mailto:imxzt@qq.com">imxzt@qq.com</a></div>
+  </div>
 </header>
 
 <div class="wrap">
   <div class="note">
-    下列为<b>未发表论文的预览版</b>：摘要结论、图表与回归表、结论章节<b>已隐去</b>，保留标题、作者、
-    研究背景与文献综述、研究假设、变量定义与模型设定。<b>点击论文标题即可在本页直接阅读全文</b>，也可按需下载。
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.6v.1"/></svg>
+    <p>
+      下列为<b>未发表论文与研究材料</b>的预览版：<b>摘要结论句与结论章节已隐去</b>，保留标题、作者、
+      研究背景与文献综述、研究假设、变量定义与模型设定，以及<b>公式、图表与回归表</b>。
+      <span class="dot">·</span>点击左侧标题即可在本页直接阅读，亦可按需下载原件。
+    </p>
   </div>
 
-  <h2>论文列表</h2>
-  <ul id="list"></ul>
+  <div class="layout">
+    <aside>
+      <div class="side-head"><h2>目录</h2><span id="cnt"></span></div>
+      <ul id="list"></ul>
+    </aside>
 
-  <div class="viewer">
-    <div class="bar">
-      <span class="name" id="cur">—</span>
-      <button id="prev" disabled>上一页</button>
-      <span id="pinfo"></span>
-      <button id="next" disabled>下一页</button>
-      <button id="zoomout" disabled>缩小</button>
-      <button id="zoomin" disabled>放大</button>
-      <a class="btn" id="dl" href="#" target="_blank" rel="noopener">下载 PDF</a>
-    </div>
-    <div id="stage"><div class="hint">正在载入…</div></div>
+    <section class="viewer">
+      <div class="bar">
+        <span class="name" id="cur">—</span>
+
+        <span class="grp">
+          <button class="ib" id="prev" title="上一页（←）" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <span id="pinfo"></span>
+          <button class="ib" id="next" title="下一页（→）" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </span>
+
+        <span class="grp">
+          <button class="ib" id="zoomout" title="缩小" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 12h12"/></svg>
+          </button>
+          <button class="ib" id="zoomin" title="放大" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 6v12"/><path d="M6 12h12"/></svg>
+          </button>
+        </span>
+
+        <a class="dl" id="dl" href="#" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7.5 11l4.5 4.5 4.5-4.5"/><path d="M5 19h14"/></svg>
+          下载
+        </a>
+      </div>
+      <div id="stage"><div class="hint">正在载入…</div></div>
+    </section>
   </div>
 
-  <footer>田信忠 · 金融数据分析 / 行业研究 · imxzt@qq.com</footer>
+  <footer>
+    <span>田信忠 · 金融数据分析 / 行业研究</span>
+    <span class="kbd">← → 翻页 · 点击目录切换材料 · 内容已隐去结论部分</span>
+  </footer>
 </div>
 
 <script src="pdfjs/pdf.min.js"></script>
 <script>
-const BASE  = "";          // 全部资源与 PDF 走本仓库（GitHub Pages 同源）
 const PAPERS = [
   { g:"校内合作" },
   { t:"数字普惠金融提高了农村居民收入吗？——来自 285 个城市的经验证据",
@@ -121,85 +264,97 @@ const PAPERS = [
 ];
 if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.js";
 
+const ARROW = '<svg class="go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
 const listEl = document.getElementById('list'), stage = document.getElementById('stage');
-const curEl = document.getElementById('cur'), pinfo = document.getElementById('pinfo');
+const curEl  = document.getElementById('cur'),  pinfo = document.getElementById('pinfo');
+const cntEl  = document.getElementById('cnt'),  btnDl = document.getElementById('dl');
 const btnPrev = document.getElementById('prev'), btnNext = document.getElementById('next');
-const btnIn = document.getElementById('zoomin'), btnOut = document.getElementById('zoomout'), btnDl = document.getElementById('dl');
+const btnIn   = document.getElementById('zoomin'), btnOut = document.getElementById('zoomout');
 let doc = null, page = 1, idx = -1, busy = false, zoom = 1;
 
+let total = 0;
 PAPERS.forEach((p, i) => {
-  if (p.g) {
-    const h = document.createElement('li');
-    h.className = 'ghead'; h.textContent = p.g;
-    listEl.appendChild(h);
-    return;
-  }
   const li = document.createElement('li');
-  li.dataset.idx = i;
-  li.innerHTML = '<div><div class="t">' + p.t + '</div><div class="m">' + p.m + '</div></div>' +
-                 '<div class="go">在线阅读 ›</div>';
-  li.onclick = () => open(i);
+  if (p.g) {
+    li.className = 'ghead'; li.textContent = p.g;
+  } else {
+    total++;
+    li.className = 'paper'; li.dataset.idx = i;
+    li.innerHTML = '<div class="t">' + p.t + '</div><div class="m">' + p.m + '</div>' + ARROW;
+    li.onclick = () => open(i);
+  }
   listEl.appendChild(li);
 });
+cntEl.textContent = total + ' 篇';
 
-function mark() {
-  [...listEl.children].forEach(el => el.classList.toggle('on', el.dataset && el.dataset.idx == idx));
+function mark(){
+  listEl.querySelectorAll('li.paper').forEach(el => el.classList.toggle('on', +el.dataset.idx === idx));
 }
-function setNav() {
-  pinfo.textContent = doc ? ('第 ' + page + ' / ' + doc.numPages + ' 页') : '';
+function setNav(){
+  pinfo.textContent = doc ? page + ' / ' + doc.numPages : '';
   btnPrev.disabled = !doc || page <= 1;
   btnNext.disabled = !doc || page >= doc.numPages;
   btnIn.disabled = btnOut.disabled = !doc;
 }
 
-async function open(i) {
+async function open(i){
   idx = i; mark(); zoom = 1;
-  curEl.textContent = PAPERS[i].t;
-  btnDl.href = PAPERS[i].f;
-  stage.innerHTML = '<div class="hint">正在载入并解析 PDF…</div>';
+  const p = PAPERS[i];
+  curEl.textContent = p.t;
+  btnDl.href = p.f;
+  stage.innerHTML = '<div class="hint">正在载入…</div>';
   doc = null; setNav();
-  let lastErr = null;
-  // 优先同源（本仓库），失败时回退绝对地址（便于本地 file:// 直接打开）
-  const urls = [PAPERS[i].f, "https://imxzt.github.io/research-papers/" + PAPERS[i].f];
-  for (const u of urls) {
+  let err = null;
+  // 优先同源；失败回退绝对地址（便于本地 file:// 打开）
+  for (const u of [p.f, 'https://imxzt.github.io/research-papers/' + p.f]) {
     try { doc = await pdfjsLib.getDocument({ url: u }).promise; break; }
-    catch (e) { lastErr = e; doc = null; }
+    catch (e) { err = e; doc = null; }
   }
-  if (!doc) { stage.innerHTML = '<div class="hint">载入失败：' + (lastErr && lastErr.message || lastErr) + '</div>'; return; }
+  if (!doc) { stage.innerHTML = '<div class="hint">载入失败：' + (err && err.message || err) + '</div>'; return; }
   page = 1;
   await render();
+  if (window.matchMedia('(max-width:960px)').matches) {
+    document.querySelector('.viewer').scrollIntoView({ behavior:'smooth', block:'start' });
+  }
 }
 
-async function render() {
+async function render(){
   if (!doc || busy) return;
   busy = true;
   try {
     const pg = await doc.getPage(page);
-    const v1 = pg.getViewport({ scale: 1 });
-    const maxW = Math.min(stage.clientWidth - 26, 900);
+    const v1 = pg.getViewport({ scale:1 });
+    const maxW = Math.min(stage.clientWidth - 34, 1000);
     const vp = pg.getViewport({ scale: (maxW / v1.width) * zoom });
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const cv = document.createElement('canvas');
-    cv.width = Math.floor(vp.width); cv.height = Math.floor(vp.height);
-    cv.style.maxWidth = 'none';
+    cv.width  = Math.floor(vp.width  * dpr);
+    cv.height = Math.floor(vp.height * dpr);
+    cv.style.width  = Math.floor(vp.width)  + 'px';
+    cv.style.height = Math.floor(vp.height) + 'px';
     stage.innerHTML = ''; stage.appendChild(cv);
-    cv.style.display = 'block'; cv.style.margin = '0 auto';
-    await pg.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
-    if (zoom > 1) { stage.style.overflowX = 'auto'; } else { stage.style.overflowX = 'hidden'; }
+    stage.style.textAlign = zoom > 1 ? 'left' : 'center';
+    await pg.render({
+      canvasContext: cv.getContext('2d'),
+      viewport: vp,
+      transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : undefined
+    }).promise;
     setNav();
   } finally { busy = false; }
 }
 
 btnPrev.onclick = () => { if (doc && page > 1) { page--; render(); } };
 btnNext.onclick = () => { if (doc && page < doc.numPages) { page++; render(); } };
-btnIn.onclick  = () => { if (doc && zoom < 2.5) { zoom += 0.25; render(); } };
-btnOut.onclick = () => { if (doc && zoom > 0.5) { zoom -= 0.25; render(); } };
+btnIn.onclick   = () => { if (doc && zoom < 2.5) { zoom += 0.25; render(); } };
+btnOut.onclick  = () => { if (doc && zoom > 0.5) { zoom -= 0.25; render(); } };
 document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
   if (e.key === 'ArrowLeft')  btnPrev.click();
   if (e.key === 'ArrowRight') btnNext.click();
 });
+window.addEventListener('resize', () => { if (doc && !busy) render(); });
 
-const firstPaper = PAPERS.findIndex(p => !p.g);
-if (window.pdfjsLib) open(firstPaper);
+if (window.pdfjsLib) open(PAPERS.findIndex(p => !p.g));
 else stage.innerHTML = '<div class="hint">PDF 组件加载失败（pdf.js）。</div>';
 </script>
 </body>
