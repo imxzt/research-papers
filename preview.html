@@ -24,6 +24,9 @@
   li:last-child { border-bottom:none; }
   li:hover { background:var(--panel); }
   li.on { background:#EEF3FA; box-shadow:inset 3px 0 0 var(--blue); }
+  li.ghead { background:#F2F5FA; color:var(--navy); font-weight:700; font-size:12.5px;
+             letter-spacing:.8px; cursor:default; padding:8px 16px; }
+  li.ghead:hover { background:#F2F5FA; }
   .t { font-size:13.5px; font-weight:600; }
   .m { font-size:12px; color:var(--sub); margin-top:3px; }
   .go { font-size:12px; color:var(--blue); white-space:nowrap; padding-top:2px; }
@@ -71,25 +74,52 @@
   <footer>田信忠 · 金融数据分析 / 行业研究 · imxzt@qq.com</footer>
 </div>
 
-<script src="https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/pdfjs/pdf.min.js"></script>
+<script src="pdfjs/pdf.min.js"></script>
 <script>
-const OSS   = "https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/";       // 快：国内节点（下载用）
-const PAGES = "https://imxzt.github.io/research-papers/";                  // 同源兜底（预览用）
+const BASE  = "";          // 全部资源与 PDF 走本仓库（GitHub Pages 同源）
 const PAPERS = [
+  { g:"校内合作" },
+  { t:"数字普惠金融提高了农村居民收入吗？——来自 285 个城市的经验证据",
+    m:"田信忠 · 2011–2022 年中国 285 个地级及以上城市面板数据 · 投稿 Agriculture 等期刊 · 研究生学术论坛一等奖",
+    f:"01-digital-financial-inclusion-and-rural-income.pdf" },
+  { t:"留华筑梦，择业有因——东盟来华留学生就业意愿及其影响因素研究",
+    m:"田信忠等 · 191 份东盟来华留学生有效问卷 · 全国大学生市场调查与分析大赛全国总决赛三等奖",
+    f:"08-market-survey-asean-students-employment-intention.pdf" },
+  { t:"贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据",
+    m:"李政、田信忠、张皓彦 · 1991–2022 年 RCEP 成员国 · 区域贸易协定深度与绿色 TFP",
+    f:"04-rta-depth-and-green-tfp.pdf" },
   { t:"数字贸易协议对全球价值链前向参与度的影响研究——来自 RCEP 国家的证据",
     m:"方冬莉、田信忠、张皓彦、苏梦颖 · 广西民族大学经济学院 · 投稿《国际贸易问题》等期刊",
     f:"02-digital-trade-agreements-and-gvc-forward-participation.pdf" },
-  { t:"贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据",
-    m:"李政、田信忠、张皓彦 · 区域贸易协定深度与绿色全要素生产率",
-    f:"04-rta-depth-and-green-tfp.pdf" },
-  { t:"数字普惠金融提高了农村居民收入吗？——来自 285 个城市的经验证据",
-    m:"田信忠 · 2011–2022 年中国 285 个地级及以上城市面板数据 · 投稿 Agriculture 等期刊",
-    f:"01-digital-financial-inclusion-and-rural-income.pdf" },
   { t:"Extreme Weather Shocks and Rural Household Income in China: The Buffering Role of Digital Financial Inclusion and Spatial Spillover Effects",
-    m:"极端天气冲击与农村收入——数字金融缓冲作用 · 英文工作论文",
-    f:"03-extreme-weather-shocks-rural-income-and-digital-finance.pdf" }
+    m:"极端天气冲击与农村收入——数字金融缓冲作用 · 293 个地级市 · 英文工作论文",
+    f:"03-extreme-weather-shocks-rural-income-and-digital-finance.pdf" },
+  { t:"区域贸易协议深度对中国供应链转移的影响研究——基于 RCEP 成员国的实证分析",
+    m:"田信忠等 · 2000–2022 年 14 个 RCEP 成员国 · 增加值分解框架 · 工作论文",
+    f:"05-rta-depth-and-china-supply-chain-shift.pdf" },
+  { t:"流通基础设施升级对居民消费活力的影响——基于国家骨干冷链物流基地设立的准自然实验",
+    m:"田信忠等 · 337 个地级市 × 1998–2025 年面板 · 多期 DID + PSM · 中间成果",
+    f:"06-cold-chain-infrastructure-and-consumption-vitality.pdf" },
+  { g:"跨校合作" },
+  { t:"Green Finance and the Quality of Green Innovation: A Quasi-Natural Experiment from China's Pilot Zones",
+    m:"与天津商业大学合作 · A 股上市公司面板 · 多期 DID + PSM-DID · 合作论文",
+    f:"07-green-finance-and-green-innovation-quality.pdf" },
+  { t:"广西—东盟合作发展年度报告（2024 年）马来西亚篇",
+    m:"广西大学中国—东盟研究院组织编著 · 马来西亚章节独立完成 · 已出版",
+    f:"11-guangxi-asean-annual-report-2024-malaysia.pdf" },
+  { g:"课题参与" },
+  { t:"RCEP 框架下数字贸易规则对区域价值链前向参与度的提升路径与对策研究",
+    m:"广西民族大学研究生教育创新计划项目申报书 · 校级立项 gxmzu-chxs2025246",
+    f:"09-rcep-digital-trade-rules-and-gvc-upgrading.pdf" },
+  { g:"会议实践" },
+  { t:"气候政策不确定性对制造业企业全要素生产率的影响",
+    m:"苏梦颖、李政、田信忠 · 第十一期碳中和与气候金融高端论坛（长沙）· 合作论文",
+    f:"10-climate-policy-uncertainty-and-manufacturing-tfp.pdf" },
+  { t:"中南财经政法大学经济贸易学院 2026 年暑期学校《数智时代的经济学研究：道与器》结业证书",
+    m:"2026 年 7 月 7–12 日 · 武汉 · 达到结业要求，准予结业",
+    f:"12-cqufe-summer-school-certificate.pdf" }
 ];
-if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = OSS + "pdfjs/pdf.worker.min.js";
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.js";
 
 const listEl = document.getElementById('list'), stage = document.getElementById('stage');
 const curEl = document.getElementById('cur'), pinfo = document.getElementById('pinfo');
@@ -98,7 +128,14 @@ const btnIn = document.getElementById('zoomin'), btnOut = document.getElementByI
 let doc = null, page = 1, idx = -1, busy = false, zoom = 1;
 
 PAPERS.forEach((p, i) => {
+  if (p.g) {
+    const h = document.createElement('li');
+    h.className = 'ghead'; h.textContent = p.g;
+    listEl.appendChild(h);
+    return;
+  }
   const li = document.createElement('li');
+  li.dataset.idx = i;
   li.innerHTML = '<div><div class="t">' + p.t + '</div><div class="m">' + p.m + '</div></div>' +
                  '<div class="go">在线阅读 ›</div>';
   li.onclick = () => open(i);
@@ -106,7 +143,7 @@ PAPERS.forEach((p, i) => {
 });
 
 function mark() {
-  [...listEl.children].forEach((el, i) => el.classList.toggle('on', i === idx));
+  [...listEl.children].forEach(el => el.classList.toggle('on', el.dataset && el.dataset.idx == idx));
 }
 function setNav() {
   pinfo.textContent = doc ? ('第 ' + page + ' / ' + doc.numPages + ' 页') : '';
@@ -118,11 +155,12 @@ function setNav() {
 async function open(i) {
   idx = i; mark(); zoom = 1;
   curEl.textContent = PAPERS[i].t;
-  btnDl.href = OSS + PAPERS[i].f;
+  btnDl.href = PAPERS[i].f;
   stage.innerHTML = '<div class="hint">正在载入并解析 PDF…</div>';
   doc = null; setNav();
-  const urls = [OSS + PAPERS[i].f, PAGES + PAPERS[i].f];
   let lastErr = null;
+  // 优先同源（本仓库），失败时回退绝对地址（便于本地 file:// 直接打开）
+  const urls = [PAPERS[i].f, "https://imxzt.github.io/research-papers/" + PAPERS[i].f];
   for (const u of urls) {
     try { doc = await pdfjsLib.getDocument({ url: u }).promise; break; }
     catch (e) { lastErr = e; doc = null; }
@@ -160,7 +198,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') btnNext.click();
 });
 
-if (window.pdfjsLib) open(0);
+const firstPaper = PAPERS.findIndex(p => !p.g);
+if (window.pdfjsLib) open(firstPaper);
 else stage.innerHTML = '<div class="hint">PDF 组件加载失败（pdf.js）。</div>';
 </script>
 </body>
