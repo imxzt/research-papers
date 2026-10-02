@@ -218,8 +218,13 @@
   </footer>
 </div>
 
-<script src="pdfjs/pdf.min.js"></script>
+<script src="https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/pdfjs/pdf.min.js"></script>
 <script>
+/* 数据源策略：OSS 国内节点快（首选）→ 失败回退 Pages 同源（备用）。
+   注意 OSS 默认域名对 PDF 强制下载（Content-Disposition: attachment），
+   但 pdf.js 用 fetch/XHR 取字节流，不受该头影响，故可正常页内渲染。 */
+const OSS   = "https://imxzt-papers.oss-cn-shenzhen.aliyuncs.com/";
+const PAGES = "https://imxzt.github.io/research-papers/";
 const PAPERS = [
   { g:"校内合作" },
   { t:"数字普惠金融提高了农村居民收入吗？——来自 285 个城市的经验证据",
@@ -262,7 +267,7 @@ const PAPERS = [
     m:"2026 年 7 月 7–12 日 · 武汉 · 达到结业要求，准予结业",
     f:"12-cqufe-summer-school-certificate.pdf" }
 ];
-if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.min.js";
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = OSS + "pdfjs/pdf.worker.min.js";
 
 const ARROW = '<svg class="go" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
 const listEl = document.getElementById('list'), stage = document.getElementById('stage');
@@ -271,6 +276,19 @@ const cntEl  = document.getElementById('cnt'),  btnDl = document.getElementById(
 const btnPrev = document.getElementById('prev'), btnNext = document.getElementById('next');
 const btnIn   = document.getElementById('zoomin'), btnOut = document.getElementById('zoomout');
 let doc = null, page = 1, idx = -1, busy = false, zoom = 1;
+const cache = new Map();          // 已加载文档缓存，切换回来秒开
+const prefetching = new Set();    // 预取去重
+
+/* 预取相邻材料：命中缓存后切换是瞬时的 */
+function prefetch(i){
+  const p = PAPERS[i];
+  if (!p || p.g || cache.has(i) || prefetching.has(i)) return;
+  prefetching.add(i);
+  pdfjsLib.getDocument({ url: OSS + p.f }).promise
+    .then(d => cache.set(i, d))
+    .catch(() => {})
+    .finally(() => prefetching.delete(i));
+}
 
 let total = 0;
 PAPERS.forEach((p, i) => {
@@ -301,18 +319,38 @@ async function open(i){
   idx = i; mark(); zoom = 1;
   const p = PAPERS[i];
   curEl.textContent = p.t;
-  btnDl.href = p.f;
-  stage.innerHTML = '<div class="hint">正在载入…</div>';
+  btnDl.href = OSS + p.f;                       // 下载走 OSS（国内快）
   doc = null; setNav();
+
+  // 命中缓存 → 立即渲染，无等待
+  if (cache.has(i)) {
+    doc = cache.get(i);
+    page = 1;
+    await render();
+    prefetch(i + 1); prefetch(i - 1);
+    return;
+  }
+
+  stage.innerHTML = '<div class="hint">正在载入…</div>';
   let err = null;
-  // 优先同源；失败回退绝对地址（便于本地 file:// 打开）
-  for (const u of [p.f, 'https://imxzt.github.io/research-papers/' + p.f]) {
-    try { doc = await pdfjsLib.getDocument({ url: u }).promise; break; }
-    catch (e) { err = e; doc = null; }
+  // 首选 OSS（快）；失败回退 Pages 同源；再失败回退 Pages 绝对地址
+  const urls = [OSS + p.f, p.f, PAGES + p.f];
+  for (const u of urls) {
+    try {
+      doc = await pdfjsLib.getDocument({
+        url: u,
+        // 首屏进度：先到先渲染，不等整份下载完
+        disableAutoFetch: true,
+        disableStream: false
+      }).promise;
+      break;
+    } catch (e) { err = e; doc = null; }
   }
   if (!doc) { stage.innerHTML = '<div class="hint">载入失败：' + (err && err.message || err) + '</div>'; return; }
+  cache.set(i, doc);
   page = 1;
   await render();
+  prefetch(i + 1); prefetch(i - 1);
   if (window.matchMedia('(max-width:960px)').matches) {
     document.querySelector('.viewer').scrollIntoView({ behavior:'smooth', block:'start' });
   }
