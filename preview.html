@@ -39,7 +39,7 @@
   .note{
     display:flex;gap:11px;align-items:flex-start;
     background:var(--panel);border:1px solid var(--line);border-radius:2px;
-    padding:13px 16px;margin-bottom:26px;
+    padding:15px 18px;margin-bottom:30px;
   }
   .note svg{flex:none;margin-top:2px;color:var(--blue)}
   .note p{font-size:12.8px;color:#4B5563;line-height:1.7}
@@ -60,7 +60,7 @@
 
   li.ghead{
     font-family:var(--serif);font-size:12.5px;color:var(--navy);letter-spacing:2px;
-    padding:16px 2px 6px;cursor:default;
+    padding:18px 2px 8px;cursor:default;
   }
   li.ghead:first-child{padding-top:8px}
   li.ghead::before{
@@ -69,7 +69,7 @@
   }
 
   li.paper{
-    position:relative;padding:9px 26px 9px 11px;cursor:pointer;border-radius:2px;
+    position:relative;padding:11px 26px 11px 12px;cursor:pointer;border-radius:2px;
     transition:background .16s ease;
   }
   li.paper::before{
@@ -138,30 +138,43 @@
   footer .kbd{color:var(--sub)}
 
   /* ── 项目经历（编号与简历「项目目录」一一对应） ───────────── */
-  .projects{margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}
-  .pj-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
-           padding-bottom:10px;border-bottom:1.5px solid var(--navy)}
-  .pj-head h2{font-family:var(--serif);font-size:17px;font-weight:400;color:var(--navy);letter-spacing:3px}
-  .pj-head p{font-size:12.4px;color:var(--sub);letter-spacing:.3px}
-  .pj-grid{list-style:none;margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
-  li.pj{padding:15px 0 14px;border-bottom:1px solid var(--line);scroll-margin-top:16px;
+  .projects{margin-top:46px;padding-top:28px;border-top:1px solid var(--line)}
+  .pj-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+           padding-bottom:14px;border-bottom:1.5px solid var(--navy)}
+  .pj-head h2{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--navy);letter-spacing:4px}
+  .pj-head p{font-size:12.6px;color:var(--sub);letter-spacing:.3px}
+  .pj-nav{display:flex;flex-wrap:wrap;gap:6px 15px;margin:15px 0 4px;font-size:12.4px}
+  .pj-nav a{color:var(--faint);font-variant-numeric:tabular-nums;letter-spacing:.5px;
+            transition:color .15s ease}
+  .pj-nav a:hover{color:var(--blue)}
+  .pj-group{margin-top:30px}
+  .pj-gt{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+         font-family:var(--serif);font-size:14px;font-weight:400;color:var(--navy);letter-spacing:2.6px;
+         padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .pj-gt span{font-family:inherit;font-size:11.6px;color:var(--faint);letter-spacing:.7px}
+  .pj-grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px}
+  li.pj{padding:21px 0 19px;border-bottom:1px solid #F0F3F8;scroll-margin-top:22px;
         transition:background .18s ease,box-shadow .18s ease}
-  li.pj.focus{background:var(--blue-soft);box-shadow:-11px 0 0 var(--blue-soft),11px 0 0 var(--blue-soft)}
-  .pj-h{display:flex;align-items:baseline;gap:9px}
-  .pj-h .no{font-family:var(--serif);font-size:15px;color:var(--blue);letter-spacing:1px;flex:none}
-  .pj-h h3{flex:1;font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
-  .pj-h .tag{flex:none;font-size:11.4px;color:var(--faint);letter-spacing:.6px}
-  .pj-res{margin-top:6px;font-size:12.4px;color:#4B5563;line-height:1.7}
-  .pj-f{margin-top:8px}
-  .pj-f>div{display:flex;gap:10px;margin-bottom:3px}
-  .pj-f dt{flex:none;width:58px;font-size:11.6px;color:var(--faint);letter-spacing:.6px;padding-top:2px}
-  .pj-f dd{flex:1;font-size:12.6px;color:#39404A;line-height:1.75;text-align:justify}
+  li.pj.focus{background:var(--blue-soft);box-shadow:-14px 0 0 var(--blue-soft),14px 0 0 var(--blue-soft)}
+  .pj-h{display:flex;gap:10px;align-items:baseline}
+  .pj-h .no{font-family:var(--serif);font-size:16px;color:var(--blue);letter-spacing:1px;flex:none}
+  .pj-h h4{font-size:15px;font-weight:600;color:var(--ink);line-height:1.5}
+  .pj-res{margin-top:8px;font-size:13px;color:#525A66;line-height:1.75}
+  .pj-f{margin-top:12px}
+  .pj-f>div{display:flex;gap:14px;margin-bottom:7px}
+  .pj-f dt{flex:none;width:62px;font-size:12px;color:var(--faint);letter-spacing:.8px;padding-top:2px}
+  .pj-f dd{flex:1;font-size:13.4px;color:#39404A;line-height:1.85;text-align:justify}
   .pj-f b{color:var(--navy);font-weight:600}
-  .pj-act{margin-top:9px}
-  .pj-act button{font:inherit;font-size:12.2px;color:var(--blue);background:none;border:none;
-                 border-bottom:1px solid var(--line-2);padding:0 0 1px;cursor:pointer;
+  .pj-act{margin-top:13px}
+  .pj-act button{font:inherit;font-size:12.4px;color:var(--blue);background:none;border:none;
+                 border-bottom:1px solid var(--line-2);padding:0 0 2px;cursor:pointer;
                  transition:border-color .15s ease}
   .pj-act button:hover{border-color:var(--blue)}
+  @media (max-width:900px){
+    .pj-grid{grid-template-columns:1fr;gap:0}
+    .pj-head h2{font-size:16px}
+    .pj-group{margin-top:24px}
+  }
   @media (max-width:900px){
     .pj-grid{grid-template-columns:1fr;gap:0}
     .pj-head h2{font-size:15.5px}
@@ -249,142 +262,163 @@
       <h2>项目经历</h2>
       <p>编号与简历「项目目录」一一对应 · 共 15 项 · 数据处理、建模与实证均由本人独立完成</p>
     </div>
-    <ol class="pj-grid">
-      <li class="pj" id="p01">
-        <div class="pj-h"><span class="no">01</span><h3>数字普惠金融与农民增收</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《数字普惠金融提高了农村居民收入吗？》· 研究生学术论坛一等奖</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>2011–2022 年 <b>285</b> 个地级及以上城市面板（<b>3,420</b> 样本），整合北大数字普惠金融指数与城市统计年鉴，缺失值多重插补</dd></div>
-          <div><dt>分析建模</dt><dd>双向固定效应 + 空间杜宾模型，私营个体经济就业效应中介检验、区域异质性与空间溢出</dd></div>
-          <div><dt>研究结论</dt><dd>数字普惠金融显著提高农村可支配收入，东部与东北更显著，第一产业比重下降增强其效应</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="1">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p02">
-        <div class="pj-h"><span class="no">02</span><h3>市场调研与分析大赛全国总决赛</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《留华筑梦，择业有因——东盟来华留学生就业意愿及其影响因素研究》· 全国总决赛三等奖</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>自主设计问卷并实地调研，回收 <b>191</b> 份东盟来华留学生有效样本，覆盖马来西亚、老挝等国，完成清洗与量表信效度检验</dd></div>
-          <div><dt>分析建模</dt><dd>构建多元 Logit 模型（以“回国就业”为参照组），对个体特征、制度、经济机会、基础设施与文化因素分组回归</dd></div>
-          <div><dt>研究结论</dt><dd>中文水平、在华实习经历与对双边经贸了解度是留华就业关键因素，学历与政策认知为间接作用</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="2">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p03">
-        <div class="pj-h"><span class="no">03</span><h3>极端天气与农村居民收入</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《极端天气冲击与农村收入——数字金融缓冲作用》· 工作论文</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>2011–2022 年中国 <b>293</b> 个地级市面板，整合气象站点极端天气指数与数字普惠金融指数，构建极端低温、干旱、洪涝等分灾种指标</dd></div>
-          <div><dt>分析建模</dt><dd>双向固定效应 + 空间杜宾模型，数字普惠金融缓冲效应与空间溢出识别，含内生性、剔除直辖市与变量对数化检验</dd></div>
-          <div><dt>研究结论</dt><dd>极端天气显著抑制农村收入（低温与干旱最强），数字普惠金融有效缓释且数字化程度缓冲最突出，农业保险为关键路径</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="5">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p04">
-        <div class="pj-h"><span class="no">04</span><h3>城市冷链流通基础设施政策效应评估</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《流通基础设施升级对居民消费活力的影响》· 中间成果</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>整合 <b>9</b> 套异构数据源构建 <b>337</b> 个地级市 × 1998–2025 年面板（<b>287</b> 变量、<b>9,436</b> 行），差异化插补 <b>8.8 万+</b> 缺失观测，政策名单 <b>105</b> 项官方交叉验证</dd></div>
-          <div><dt>分析建模</dt><dd>渐进式多期 DID（处理 <b>142</b> 城 / 控制 <b>195</b> 城）+ PSM 子样本 + 事件研究，<b>500</b> 次安慰剂与平行趋势检验</dd></div>
-          <div><dt>研究结论</dt><dd>政策显著提升居民人均消费约 <b>20%</b>（对数效应 <b>0.196</b>，p&lt;0.01），首年效果最强，中西部与低收入地区更突出</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="7">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p05">
-        <div class="pj-h"><span class="no">05</span><h3>区域贸易协议与绿色全要素生产率</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据》</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>1991–2022 年 RCEP 成员国面板，劳动力与 CO₂ 排放取自世界银行，协定深度取自世界银行 DTA 数据库，完成指标体系构建与缩尾处理</dd></div>
-          <div><dt>分析建模</dt><dd>DDF 超效率模型测算 GTFP，双向固定效应回归 + 机制与调节效应检验，含替换测度、对数化、去疫情年等稳健性</dd></div>
-          <div><dt>研究结论</dt><dd>协定深化显著提升 GTFP，技术转移与政府效能为主要渠道，贸易集中具负向调节，东盟国家更显著</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="3">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p06">
-        <div class="pj-h"><span class="no">06</span><h3>数字协定协议与价值链前向参与度</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《数字贸易协议对全球价值链前向参与度的影响研究——来自 RCEP 国家的证据》· 已投稿</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>2001–2018 年 <b>15</b> 个 RCEP 国家面板，基于 OECD 投入产出矩阵提取前向参与度，构建数字贸易协议深度评分</dd></div>
-          <div><dt>分析建模</dt><dd>双向固定效应基准回归，贸易便利化、国家竞争优势、出口结构三渠道机制检验，工具变量（他国评分均值）与双重机器学习处理内生性</dd></div>
-          <div><dt>研究结论</dt><dd>数字贸易协议显著提升 GVC 前向参与度，效应受国家教育水平、治理效率与创新能力调节</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="4">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p07">
-        <div class="pj-h"><span class="no">07</span><h3>中国—RCEP 供应链转移</h3><span class="tag">校内合作</span></div>
-        <p class="pj-res">成果：《区域贸易协议深度对中国供应链转移的影响研究——基于 RCEP 成员国的实证分析》· 工作论文</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>2000–2022 年 <b>14</b> 个 RCEP 成员国面板，运用 Wang 等（2017）增加值分解框架测算中国增加值跨境循环强度，构建协议深度综合指标</dd></div>
-          <div><dt>分析建模</dt><dd>从零设计 <b>4</b> 类供应链转移指标（直接 / 间接 / 内部 / 返回），基准回归 + 工具变量 + DDML 双重机器学习，机制与异质性检验</dd></div>
-          <div><dt>研究结论</dt><dd>协议深度显著促进供应链向 RCEP 转移，经减少贸易诉讼、扩大出口、降低波动三条渠道传导</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="6">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p08">
-        <div class="pj-h"><span class="no">08</span><h3>绿色金融与绿色创新（天津商业大学）</h3><span class="tag">跨校合作</span></div>
-        <p class="pj-res">成果：《Green Finance and the Quality of Green Innovation》· 合作论文</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>A 股上市公司面板（<b>13</b> 年），绿色专利数据取自 CNRDS 平台，按 IPC Green 清单匹配，连续变量 1% 缩尾</dd></div>
-          <div><dt>分析建模</dt><dd>多期 DID 评估绿色金融试验区政策效应，PSM-DID 缓解选择偏差，机制检验（分析师关注）与异质性分析</dd></div>
-          <div><dt>研究结论</dt><dd>绿色金融试验区政策提升企业绿色创新质量，机制上通过吸引分析师关注与缓解融资约束实现</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="9">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p09">
-        <div class="pj-h"><span class="no">09</span><h3>广西东盟合作研究报告（广西大学）</h3><span class="tag">跨校合作</span></div>
-        <p class="pj-res">成果研究报告：《广西—东盟合作发展年度报告（2024 年）马来西亚篇》· 已出版</p>
-        <dl class="pj-f">
-          <div><dt>章节工作</dt><dd>独立完成马来西亚部分资料收集与数据可视化：海关统计数据在线查询平台进出口数据、广西统计局数据、交流活动与院校合作清单的采集整理与核对，并完成该章节全文撰写</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="10">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p10">
-        <div class="pj-h"><span class="no">10</span><h3>卖方分析师预测质量分析（天津商业大学）</h3><span class="tag">跨校合作</span></div>
-        <p class="pj-res">成果：英文工作论文《Reputation Damage and Analysts’ Earnings Forecast Quality》</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>基于合作方提供的卖方分析师盈利预测数据（单文件最大 <b>5.1GB</b>、多套 dta 合计 <b>5GB+</b>）完成清洗、对齐、标签化与样本匹配</dd></div>
-          <div><dt>分析建模</dt><dd>Python 构造变量、Stata 建模，采用倾向得分匹配（PSM）控制样本选择偏差</dd></div>
-        </dl>
-      </li>
-      <li class="pj" id="p11">
-        <div class="pj-h"><span class="no">11</span><h3>校级立项：RCEP 框架下数字贸易规则对区域价值链前向参与度的提升路径与对策研究</h3><span class="tag">课题参与</span></div>
-        <p class="pj-res">成果：广西民族大学研究生教育创新计划 · gxmzu-chxs2025246</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>基于 TAPED 数据库计分框架量化数字贸易规则深度，运用 WWZ 分解框架与 OECD 2021 版投入产出矩阵提取前向参与度</dd></div>
-          <div><dt>分析建模</dt><dd>双向固定效应模型，从贸易便利化、国家竞争优势、出口结构升级三条路径打开机制，并按人力资本、创新能力、政府效能做异质性分析</dd></div>
-          <div><dt>研究结论</dt><dd>构建“规则—要素—结构”多维机制，为差异化“嵌链”策略与规避“规则错配”提供决策依据</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="12">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p12">
-        <div class="pj-h"><span class="no">12</span><h3>导师科研项目：中国—东盟蓝色伙伴关系下桂越海洋经济合作内涵、逻辑及其优化策略研究</h3><span class="tag">课题参与</span></div>
-        <p class="pj-res">成果：广西哲学社会科学研究年度课题（青年项目）· 25GJB046 · 资助 4 万元</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>负责区域经贸数据收集、整理与统计分析，梳理中越海洋经济合作相关文献与政策文本</dd></div>
-          <div><dt>分析建模</dt><dd>围绕合作内涵与逻辑构建分析框架，为实证部分提供数据与文献支撑</dd></div>
-          <div><dt>研究结论</dt><dd>参与课题申报与研究执行，支撑研究报告撰写，形成优化策略建议</dd></div>
-        </dl>
-      </li>
-      <li class="pj" id="p13">
-        <div class="pj-h"><span class="no">13</span><h3>中南财经政法大学经济贸易学院 2026 年暑期学校（武汉）</h3><span class="tag">会议实践</span></div>
-        <p class="pj-res">成果：《数智时代的经济学研究：道与器》结业证书</p>
-        <div class="pj-act"><button data-open="15">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p14">
-        <div class="pj-h"><span class="no">14</span><h3>第十一期碳中和与气候金融高端论坛（长沙）</h3><span class="tag">会议实践</span></div>
-        <p class="pj-res">成果：《气候政策不确定性对制造业企业全要素生产率的影响》· 合作论文</p>
-        <dl class="pj-f">
-          <div><dt>数据处理</dt><dd>2011–2022 年沪深 A 股制造业上市公司样本，财务与运营数据取自 CSMAR，剔除金融类、ST、资不抵债及缺失样本</dd></div>
-          <div><dt>分析建模</dt><dd>LP 法测算全要素生产率，构建企业层面气候政策不确定性指标，固定效应回归 + 融资约束与风险承担机制检验，含剔除疫情年、变换固定效应等稳健性</dd></div>
-          <div><dt>研究结论</dt><dd>气候政策不确定性显著抑制制造业企业 TFP，通过加剧融资约束、降低风险承担与绿色创新投入传导</dd></div>
-        </dl>
-        <div class="pj-act"><button data-open="14">在页内预览成果材料</button></div>
-      </li>
-      <li class="pj" id="p15">
-        <div class="pj-h"><span class="no">15</span><h3>2025 年首届中国—东盟财经高端论坛（南宁）</h3><span class="tag">会议实践</span></div>
-        <p class="pj-res">成果：会议参与</p>
-      </li>
-    </ol>
+    <nav class="pj-nav">
+      <a href="#p01">01</a><a href="#p02">02</a><a href="#p03">03</a><a href="#p04">04</a><a href="#p05">05</a><a href="#p06">06</a><a href="#p07">07</a><a href="#p08">08</a><a href="#p09">09</a><a href="#p10">10</a><a href="#p11">11</a><a href="#p12">12</a><a href="#p13">13</a><a href="#p14">14</a><a href="#p15">15</a>
+    </nav>
+    <div class="pj-group">
+      <h3 class="pj-gt">校内合作<span>编号 01–07</span></h3>
+      <ol class="pj-grid">
+        <li class="pj" id="p01">
+          <div class="pj-h"><span class="no">01</span><h4>数字普惠金融与农民增收</h4></div>
+          <p class="pj-res">成果：《数字普惠金融提高了农村居民收入吗？》· 研究生学术论坛一等奖</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>2011–2022 年 <b>285</b> 个地级及以上城市面板（<b>3,420</b> 样本），整合北大数字普惠金融指数与城市统计年鉴，缺失值多重插补</dd></div>
+            <div><dt>分析建模</dt><dd>双向固定效应 + 空间杜宾模型，私营个体经济就业效应中介检验、区域异质性与空间溢出</dd></div>
+            <div><dt>研究结论</dt><dd>数字普惠金融显著提高农村可支配收入，东部与东北更显著，第一产业比重下降增强其效应</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="1">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p02">
+          <div class="pj-h"><span class="no">02</span><h4>市场调研与分析大赛全国总决赛</h4></div>
+          <p class="pj-res">成果：《留华筑梦，择业有因——东盟来华留学生就业意愿及其影响因素研究》· 全国总决赛三等奖</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>自主设计问卷并实地调研，回收 <b>191</b> 份东盟来华留学生有效样本，覆盖马来西亚、老挝等国，完成清洗与量表信效度检验</dd></div>
+            <div><dt>分析建模</dt><dd>构建多元 Logit 模型（以“回国就业”为参照组），对个体特征、制度、经济机会、基础设施与文化因素分组回归</dd></div>
+            <div><dt>研究结论</dt><dd>中文水平、在华实习经历与对双边经贸了解度是留华就业关键因素，学历与政策认知为间接作用</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="2">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p03">
+          <div class="pj-h"><span class="no">03</span><h4>极端天气与农村居民收入</h4></div>
+          <p class="pj-res">成果：《极端天气冲击与农村收入——数字金融缓冲作用》· 工作论文</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>2011–2022 年中国 <b>293</b> 个地级市面板，整合气象站点极端天气指数与数字普惠金融指数，构建极端低温、干旱、洪涝等分灾种指标</dd></div>
+            <div><dt>分析建模</dt><dd>双向固定效应 + 空间杜宾模型，数字普惠金融缓冲效应与空间溢出识别，含内生性、剔除直辖市与变量对数化检验</dd></div>
+            <div><dt>研究结论</dt><dd>极端天气显著抑制农村收入（低温与干旱最强），数字普惠金融有效缓释且数字化程度缓冲最突出，农业保险为关键路径</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="5">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p04">
+          <div class="pj-h"><span class="no">04</span><h4>城市冷链流通基础设施政策效应评估</h4></div>
+          <p class="pj-res">成果：《流通基础设施升级对居民消费活力的影响》· 中间成果</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>整合 <b>9</b> 套异构数据源构建 <b>337</b> 个地级市 × 1998–2025 年面板（<b>287</b> 变量、<b>9,436</b> 行），差异化插补 <b>8.8 万+</b> 缺失观测，政策名单 <b>105</b> 项官方交叉验证</dd></div>
+            <div><dt>分析建模</dt><dd>渐进式多期 DID（处理 <b>142</b> 城 / 控制 <b>195</b> 城）+ PSM 子样本 + 事件研究，<b>500</b> 次安慰剂与平行趋势检验</dd></div>
+            <div><dt>研究结论</dt><dd>政策显著提升居民人均消费约 <b>20%</b>（对数效应 <b>0.196</b>，p&lt;0.01），首年效果最强，中西部与低收入地区更突出</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="7">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p05">
+          <div class="pj-h"><span class="no">05</span><h4>区域贸易协议与绿色全要素生产率</h4></div>
+          <p class="pj-res">成果：《贸易协定深度对绿色全要素生产率的影响研究——来自 RCEP 国家的证据》</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>1991–2022 年 RCEP 成员国面板，劳动力与 CO₂ 排放取自世界银行，协定深度取自世界银行 DTA 数据库，完成指标体系构建与缩尾处理</dd></div>
+            <div><dt>分析建模</dt><dd>DDF 超效率模型测算 GTFP，双向固定效应回归 + 机制与调节效应检验，含替换测度、对数化、去疫情年等稳健性</dd></div>
+            <div><dt>研究结论</dt><dd>协定深化显著提升 GTFP，技术转移与政府效能为主要渠道，贸易集中具负向调节，东盟国家更显著</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="3">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p06">
+          <div class="pj-h"><span class="no">06</span><h4>数字协定协议与价值链前向参与度</h4></div>
+          <p class="pj-res">成果：《数字贸易协议对全球价值链前向参与度的影响研究——来自 RCEP 国家的证据》· 已投稿</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>2001–2018 年 <b>15</b> 个 RCEP 国家面板，基于 OECD 投入产出矩阵提取前向参与度，构建数字贸易协议深度评分</dd></div>
+            <div><dt>分析建模</dt><dd>双向固定效应基准回归，贸易便利化、国家竞争优势、出口结构三渠道机制检验，工具变量（他国评分均值）与双重机器学习处理内生性</dd></div>
+            <div><dt>研究结论</dt><dd>数字贸易协议显著提升 GVC 前向参与度，效应受国家教育水平、治理效率与创新能力调节</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="4">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p07">
+          <div class="pj-h"><span class="no">07</span><h4>中国—RCEP 供应链转移</h4></div>
+          <p class="pj-res">成果：《区域贸易协议深度对中国供应链转移的影响研究——基于 RCEP 成员国的实证分析》· 工作论文</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>2000–2022 年 <b>14</b> 个 RCEP 成员国面板，运用 Wang 等（2017）增加值分解框架测算中国增加值跨境循环强度，构建协议深度综合指标</dd></div>
+            <div><dt>分析建模</dt><dd>从零设计 <b>4</b> 类供应链转移指标（直接 / 间接 / 内部 / 返回），基准回归 + 工具变量 + DDML 双重机器学习，机制与异质性检验</dd></div>
+            <div><dt>研究结论</dt><dd>协议深度显著促进供应链向 RCEP 转移，经减少贸易诉讼、扩大出口、降低波动三条渠道传导</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="6">在页内预览成果材料</button></div>
+        </li>
+      </ol>
+    </div>
+    <div class="pj-group">
+      <h3 class="pj-gt">跨校合作<span>编号 08–10</span></h3>
+      <ol class="pj-grid">
+        <li class="pj" id="p08">
+          <div class="pj-h"><span class="no">08</span><h4>绿色金融与绿色创新（天津商业大学）</h4></div>
+          <p class="pj-res">成果：《Green Finance and the Quality of Green Innovation》· 合作论文</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>A 股上市公司面板（<b>13</b> 年），绿色专利数据取自 CNRDS 平台，按 IPC Green 清单匹配，连续变量 1% 缩尾</dd></div>
+            <div><dt>分析建模</dt><dd>多期 DID 评估绿色金融试验区政策效应，PSM-DID 缓解选择偏差，机制检验（分析师关注）与异质性分析</dd></div>
+            <div><dt>研究结论</dt><dd>绿色金融试验区政策提升企业绿色创新质量，机制上通过吸引分析师关注与缓解融资约束实现</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="9">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p09">
+          <div class="pj-h"><span class="no">09</span><h4>广西东盟合作研究报告（广西大学）</h4></div>
+          <p class="pj-res">成果研究报告：《广西—东盟合作发展年度报告（2024 年）马来西亚篇》· 已出版</p>
+          <dl class="pj-f">
+            <div><dt>章节工作</dt><dd>独立完成马来西亚部分资料收集与数据可视化：海关统计数据在线查询平台进出口数据、广西统计局数据、交流活动与院校合作清单的采集整理与核对，并完成该章节全文撰写</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="10">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p10">
+          <div class="pj-h"><span class="no">10</span><h4>卖方分析师预测质量分析（天津商业大学）</h4></div>
+          <p class="pj-res">成果：英文工作论文《Reputation Damage and Analysts’ Earnings Forecast Quality》</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>基于合作方提供的卖方分析师盈利预测数据（单文件最大 <b>5.1GB</b>、多套 dta 合计 <b>5GB+</b>）完成清洗、对齐、标签化与样本匹配</dd></div>
+            <div><dt>分析建模</dt><dd>Python 构造变量、Stata 建模，采用倾向得分匹配（PSM）控制样本选择偏差</dd></div>
+          </dl>
+        </li>
+      </ol>
+    </div>
+    <div class="pj-group">
+      <h3 class="pj-gt">课题参与<span>编号 11–12</span></h3>
+      <ol class="pj-grid">
+        <li class="pj" id="p11">
+          <div class="pj-h"><span class="no">11</span><h4>校级立项：RCEP 框架下数字贸易规则对区域价值链前向参与度的提升路径与对策研究</h4></div>
+          <p class="pj-res">成果：广西民族大学研究生教育创新计划 · gxmzu-chxs2025246</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>基于 TAPED 数据库计分框架量化数字贸易规则深度，运用 WWZ 分解框架与 OECD 2021 版投入产出矩阵提取前向参与度</dd></div>
+            <div><dt>分析建模</dt><dd>双向固定效应模型，从贸易便利化、国家竞争优势、出口结构升级三条路径打开机制，并按人力资本、创新能力、政府效能做异质性分析</dd></div>
+            <div><dt>研究结论</dt><dd>构建“规则—要素—结构”多维机制，为差异化“嵌链”策略与规避“规则错配”提供决策依据</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="12">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p12">
+          <div class="pj-h"><span class="no">12</span><h4>导师科研项目：中国—东盟蓝色伙伴关系下桂越海洋经济合作内涵、逻辑及其优化策略研究</h4></div>
+          <p class="pj-res">成果：广西哲学社会科学研究年度课题（青年项目）· 25GJB046 · 资助 4 万元</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>负责区域经贸数据收集、整理与统计分析，梳理中越海洋经济合作相关文献与政策文本</dd></div>
+            <div><dt>分析建模</dt><dd>围绕合作内涵与逻辑构建分析框架，为实证部分提供数据与文献支撑</dd></div>
+            <div><dt>研究结论</dt><dd>参与课题申报与研究执行，支撑研究报告撰写，形成优化策略建议</dd></div>
+          </dl>
+        </li>
+      </ol>
+    </div>
+    <div class="pj-group">
+      <h3 class="pj-gt">会议实践<span>编号 13–15</span></h3>
+      <ol class="pj-grid">
+        <li class="pj" id="p13">
+          <div class="pj-h"><span class="no">13</span><h4>中南财经政法大学经济贸易学院 2026 年暑期学校（武汉）</h4></div>
+          <p class="pj-res">成果：《数智时代的经济学研究：道与器》结业证书</p>
+          <div class="pj-act"><button data-open="15">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p14">
+          <div class="pj-h"><span class="no">14</span><h4>第十一期碳中和与气候金融高端论坛（长沙）</h4></div>
+          <p class="pj-res">成果：《气候政策不确定性对制造业企业全要素生产率的影响》· 合作论文</p>
+          <dl class="pj-f">
+            <div><dt>数据处理</dt><dd>2011–2022 年沪深 A 股制造业上市公司样本，财务与运营数据取自 CSMAR，剔除金融类、ST、资不抵债及缺失样本</dd></div>
+            <div><dt>分析建模</dt><dd>LP 法测算全要素生产率，构建企业层面气候政策不确定性指标，固定效应回归 + 融资约束与风险承担机制检验，含剔除疫情年、变换固定效应等稳健性</dd></div>
+            <div><dt>研究结论</dt><dd>气候政策不确定性显著抑制制造业企业 TFP，通过加剧融资约束、降低风险承担与绿色创新投入传导</dd></div>
+          </dl>
+          <div class="pj-act"><button data-open="14">在页内预览成果材料</button></div>
+        </li>
+        <li class="pj" id="p15">
+          <div class="pj-h"><span class="no">15</span><h4>2025 年首届中国—东盟财经高端论坛（南宁）</h4></div>
+          <p class="pj-res">成果：会议参与</p>
+        </li>
+      </ol>
+    </div>
   </section>
 
   <footer>
